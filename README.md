@@ -306,22 +306,3 @@ proxmox-docker-oom-runbook/
 └── LICENSE
 ```
 
----
-
-## Push this to GitHub
-
-```bash
-cd proxmox-docker-oom-runbook
-git init
-git add .
-git commit -m "Add Proxmox + Docker OOM runbook"
-git branch -M main
-git remote add origin git@github.com:<you>/<repo>.git
-git push -u origin main
-```
-
----
-
-*Placeholders like `<vmid>`, `<container>`, `<service>`, `<you>` should be replaced
-with your real values. Commands that touch the hypervisor run on the **Proxmox
-host**; the rest run inside the **VM**.*
