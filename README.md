@@ -86,7 +86,7 @@ journalctl -k        | grep -iE "oom|killed"     # current boot
 Look for this line — the cgroup path identifies the container:
 
 ```
-oom-kill:constraint=CONSTRAINT_NONE,...,task_memcg=/system.slice/docker-ed2f8d6...c7.scope,task=php,...
+oom-kill:constraint=CONSTRAINT_NONE,...,task_memcg=/system.slice/docker-<container-id>.scope,task=php,...
 ```
 
 Resolve the cgroup ID to a container name:
@@ -267,12 +267,12 @@ for the CLI process, or fix the leak in the application code.
 ## 5. Reading an OOM-kill log line
 
 ```
-Out of memory: Killed process 1960337 (php) total-vm:1684832kB, anon-rss:1467952kB, file-rss:0kB, shmem-rss:0kB, UID:33 pgtables:3092kB oom_score_adj:0
+Out of memory: Killed process 12345 (php) total-vm:2100000kB, anon-rss:1900000kB, file-rss:0kB, shmem-rss:0kB, UID:33 pgtables:4000kB oom_score_adj:0
 ```
 
 | Field | Meaning |
 |-------|---------|
-| `1960337 (php)` | PID and name of the killed process |
+| `12345 (php)` | PID and name of the killed process |
 | `total-vm` | Total virtual memory it had mapped |
 | `anon-rss` | **Anonymous resident memory** — actual physical RAM in use (the number that matters) |
 | `file-rss` / `shmem-rss` | RAM backed by files / shared memory |
@@ -305,3 +305,8 @@ proxmox-docker-oom-runbook/
 └── LICENSE
 ```
 
+---
+
+*Placeholders like `<vmid>`, `<container>`, `<service>`, `<you>` should be replaced
+with your real values. Commands that touch the hypervisor run on the **Proxmox
+host**; the rest run inside the **VM**.*
