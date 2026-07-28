@@ -21,7 +21,6 @@ RAM and takes down an entire Proxmox VM.
 - [4. Prevention — so it doesn't happen again](#4-prevention--so-it-doesnt-happen-again)
 - [5. Reading an OOM-kill log line](#5-reading-an-oom-kill-log-line)
 - [Repo layout](#repo-layout)
-- [Push this to GitHub](#push-this-to-github)
 
 ---
 
